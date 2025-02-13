@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: blue no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Navbar styles */
+        
+        .navbar {
+            background-color: rgba(139, 69, 19, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 25px;
+            transition: background-color 0.2s;
+        }
+        
+        .profile-container:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .profile-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Main content styles */
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+        
+        .sidebar {
+            width: 250px;
+            height: calc(100vh - 80px);
+            /* Adjusted for navbar */
+            background-color: rgba(139, 69, 19, 0.85);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .map-container {
+            position: relative;
+            flex-grow: 1;
+            height: calc(100vh - 80px);
+            /* Adjusted for navbar */
+            overflow: auto;
+        }
+        
+        .map {
+            width: 100%;
+            height: auto;
+        }
+        /* Logo styles */
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 0px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 0px;
+        }
+        
+        .profile-photo {
+            width: 30px;
+            /* Adjust profile photo size */
+            height: 30px;
+            border: 2px solid white;
+        }
+        
+        .logo img {
+            width: 30px;
+            /* Adjust logo size */
+            height: 30px;
+            padding: 2px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                height: 50px;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .main-content {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="logo_panda.png" alt="EdVance Logo">
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#">About us</a>
+            <a href="#">Library</a>
+            <a href="#">General links</a>
+            <a href="#">Feedback</a>
+            <a href="#">Contact us</a>
+            <a href="home.html">Home</a>
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="profile.png" alt="Profile Photo">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="logo_panda.png" alt="Panda Logo">
+                <span class="logo-text">Learning Path</span>
+            </div>
+            <a href="math.html" class="menu-item">
+                <span class="menu-icon">📊</span>
+                <span>Basic Maths</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span>English</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🗣️</span>
+                <span>TalkSmart</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🤖</span>
+                <span>HW Assistant</span>
+            </a>
+        </div>
+
+        <div class="map-container">
+            <img src="level.png" alt="Levels Map" usemap="#level-map" class="map">
+            <map name="level-map">
+                <area shape="circle" coords="170,800,60" href="level1.html" alt="Level 1">
+                <area shape="circle" coords="320,700,60" href="level2.html" alt="Level 2">
+                <area shape="circle" coords="700,640,60" href="level1.html" alt="Level 3">
+                <area shape="circle" coords="550,520,60" href="level2.html" alt="Level 4">
+            </map>
+        </div>
+    </div>
+</body>
+
+</html>

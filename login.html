@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: url('bg.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        .navbar {
+            background-color: rgba(139, 69, 19, 0.9);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            /* Changed from default to space-between */
+            align-items: center;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            margin-left: auto;
+            /* Added to push links to the right */
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .main-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 80vh;
+            padding: 2rem;
+        }
+        
+        .mascot-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .mascot-image {
+            width: 650px;
+            height: auto;
+            padding-left: 100px;
+        }
+        
+        .login-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding-right: 100px;
+            position: relative;
+        }
+        
+        .login-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin-right: 100px;
+        }
+        
+        .login-form h2 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-group.remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-group.remember-me input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .form-group.remember-me label {
+            margin: 0;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgb(139, 69, 19);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .links {
+            margin-top: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .links a {
+            color: rgb(139, 69, 19);
+            text-decoration: none;
+        }
+        
+        .signup-btn {
+            background-color: rgb(139, 69, 19);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+        
+        .signup-btn:hover {
+            background-color: rgb(109, 49, 9);
+        }
+        
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: rgb(139, 69, 19);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chat-box {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            background: rgb(139, 69, 19);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+            display: flex;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        
+        .chat-input button {
+            padding: 0.5rem 1rem;
+            background: rgb(139, 69, 19);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .modal {
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: left;
+            align-items: center;
+            z-index: 1000;
+            padding-right: 300px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-75%, -50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 400px;
+        }
+        
+        .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .modal-content p {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .register-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgb(139, 69, 19);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 1rem;
+        }
+        
+        .modal-footer {
+            margin-top: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .modal-footer a {
+            color: rgb(139, 69, 19);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .mascot-container {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="logo_panda.png" width="50px"></div>
+        <div class="nav-links">
+            <a href="#">About us</a>
+            <a href="lib.html">Library</a>
+            <a href="implinks.html">General links</a>
+            <a href="#">Feedback</a>
+            <a href="#">Contact us</a>
+            <a href="home.html">Home</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="mascot-container">
+            <img src="mascot.png" alt="Panda Mascot" class="mascot-image">
+        </div>
+
+        <div class="login-container">
+            <div class="login-form">
+                <h2>Log In</h2>
+                <p style="text-align: center; margin-bottom: 1rem;">Become a part of our community!</p>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <button class="btn">LOGIN</button>
+                <div class="links">
+                    <a href="#">Forgot your password? Get help</a>
+                    <p>Not a member? <a href="#" class="signup-btn" style="color:white;">SIGN UP</a></p>
+                </div>
+            </div>
+
+            <div class="modal" id="signupModal">
+                <div class="modal-content">
+                    <h2>Create An Account</h2>
+                    <p>Welcome! Register for an account!</p>
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signup-username">Username</label>
+                            <input type="text" id="signup-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Your Email</label>
+                            <input type="email" id="signup-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-confirm-password">Confirm Password</label>
+                            <input type="password" id="signup-confirm-password" required>
+                        </div>
+                        <a href="after_login.html">
+                            <button type="button" class="register-btn">REGISTER</button>
+                        </a>
+
+                    </form>
+                    <div class="modal-footer">
+                        <span>Already a member?</span>
+                        <a id="signInLink">SIGN IN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="chat-button"><img src="chat.png" width="50px"></div>
+    <div class="chat-box">
+        <div class="chat-header">
+            Chat with us
+        </div>
+        <div class="chat-messages">
+            <!-- Messages will be added here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Chat functionality
+        const chatButton = document.querySelector('.chat-button');
+        const chatBox = document.querySelector('.chat-box');
+        const chatInput = document.querySelector('.chat-input input');
+        const chatSend = document.querySelector('.chat-input button');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        // Function to toggle chat box
+        function toggleChatBox() {
+            chatBox.style.display = chatBox.style.display === 'none' || chatBox.style.display === '' ? 'flex' : 'none';
+        }
+
+        // Event listener for chat button
+        chatButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent click from bubbling to document
+            toggleChatBox();
+        });
+
+        // Event listener to close chat box when clicking outside
+        document.addEventListener('click', (e) => {
+            if (chatBox.style.display === 'flex' &&
+                !chatBox.contains(e.target) &&
+                !chatButton.contains(e.target)) {
+                chatBox.style.display = 'none';
+            }
+        });
+
+        // Prevent chat box from closing when clicking inside it
+        chatBox.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.style.marginBottom = '10px';
+                messageDiv.style.textAlign = 'right';
+                messageDiv.innerHTML = `<div style="background: #f0f0f0; padding: 8px; border-radius: 8px; display: inline-block;">${message}</div>`;
+                chatMessages.appendChild(messageDiv);
+                chatInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Simulate response
+                setTimeout(() => {
+                    const responseDiv = document.createElement('div');
+                    responseDiv.style.marginBottom = '10px';
+                    responseDiv.innerHTML = `<div style="background: #e1f5fe; padding: 8px; border-radius: 8px; display: inline-block;">4+2 is 6, would you like to ask anything else?</div>`;
+                    chatMessages.appendChild(responseDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('signupModal');
+        const signupBtn = document.querySelector('.signup-btn');
+        const signInLink = document.getElementById('signInLink');
+        const loginContainer = document.querySelector('.login-form');
+
+        // Show modal when signup button is clicked
+        signupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            loginContainer.style.display = 'none';
+        });
+
+        // Close modal and show login form when "SIGN IN" is clicked
+        signInLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                loginContainer.style.display = 'block';
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your signup logic here
+            console.log('Form submitted');
+        });
+    </script>
+</body>
+
+</html>

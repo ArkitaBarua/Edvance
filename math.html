@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cards</title>
+    <style>
+        /* Previous styles remain the same until map-container */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: blue no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            background-color: rgba(139, 69, 19, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 25px;
+            transition: background-color 0.2s;
+        }
+        
+        .profile-container:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .profile-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+        
+        .sidebar {
+            width: 250px;
+            height: calc(100vh - 80px);
+            background-color: rgba(139, 69, 19, 0.85);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+        }
+        /* New styles for cards container */
+        
+        .cards-container {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .card-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .difficulty {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .beginner {
+            background-color: #e7f5e7;
+            color: #2d862d;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 0px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 0px;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            padding: 5px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .main-content {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+            .cards-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="logo_panda.png" alt="EdVance Logo">
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#">About us</a>
+            <a href="#">Library</a>
+            <a href="#">General links</a>
+            <a href="#">Feedback</a>
+            <a href="#">Contact us</a>
+            <a href="home.html">Home</a>
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="profile.png" alt="Profile Photo">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="logo_panda.png" alt="Panda Logo">
+                <span class="logo-text">Learning Path</span>
+            </div>
+            <a href="math.html" class="menu-item">
+                <span class="menu-icon">📊</span>
+                <span>Basic Maths</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span>English</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🗣️</span>
+                <span>TalkSmart</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🤖</span>
+                <span>HW Assistant</span>
+            </a>
+        </div>
+
+        <div class="cards-container">
+            <a href="mathqs.html">
+                <div class="card">
+                    <div class="card-icon">🔢</div>
+                    <h3 class="card-title">Number Recognition Test</h3>
+                    <p class="card-description">Practice identifying and writing numbers from 1 to 100. Perfect for building basic numerical literacy and counting skills.</p>
+                    <div class="card-footer">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span>15 Questions</span>
+                    </div>
+                </div>
+            </a>
+            <a href="mathqs.html">
+                <div class="card">
+
+                    <div class="card-icon">➕</div>
+                    <h3 class="card-title">Basic Operations</h3>
+                    <p class="card-description">Learn to add single-digit numbers with interactive exercises and visual aids.</p>
+                    <div class="card-footer">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span>10 Questions</span>
+                    </div>
+                </div>
+            </a>
+            <a href="mathqs.html">
+                <div class="card">
+
+                    <div class="card-icon">📏</div>
+                    <h3 class="card-title">Number Comparison</h3>
+                    <p class="card-description">Compare numbers using greater than, less than, and equal to symbols.</p>
+                    <div class="card-footer">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span>25 Questions</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

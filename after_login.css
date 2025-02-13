@@ -1,0 +1,149 @@
+/* Reset */
+
+.navbar {
+    background-color: rgba(139, 69, 19, 0.9);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: fixed;
+    /* Fix it to the top */
+    top: 0;
+    /* Align it to the top */
+    left: 0;
+    width: 100%;
+    /* Make it span the full width */
+    z-index: 1000;
+    /* Ensure it stays above other content */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Optional: Add shadow for better visibility */
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('questions.png');
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.speech-bubble {
+    position: absolute;
+    top: 20px;
+    left: -80%;
+    transform: translateX(-100%);
+    transform: translateY(-150%);
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: bold;
+    width: 300px;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.panda {
+    margin-top: 100px;
+}
+
+.panda-image {
+    width: 200px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+.navbar {
+    background-color: rgba(139, 69, 19, 0.9);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}

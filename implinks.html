@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children's Mental Health Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f9ff;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: rgba(139, 69, 19, 0.9);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            color: #4a5568;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card h2 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-info {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+        
+        .emergency {
+            background-color: #fed7d7;
+            color: #c53030;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        
+        .helpline {
+            font-weight: bold;
+            color: #2c5282;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo"><img src="logo_panda.png" width="50px" alt="Panda Logo"></div>
+        <div class="nav-links">
+            <a href="#">About us</a>
+            <a href="#">Library</a>
+            <a href="#">General links</a>
+            <a href="#">Feedback</a>
+            <a href="#">Contact us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Mental Health Resources for Children</h1>
+            <p>Welcome to our support page. Here you'll find important contact information and resources for children with learning differences and neurodevelopmental conditions.</p>
+            <div class="emergency">
+                <strong>For Immediate Help:</strong>
+                <p>National Crisis Helpline: 988</p>
+                <p>Emergency Services: 911</p>
+            </div>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <h2>Autism Support</h2>
+                <p>Resources and support for children with Autism Spectrum Disorder (ASD)</p>
+                <div class="contact-info">
+                    <p class="helpline">Autism Response Team: 1-888-AUTISM2 (288-4762)</p>
+                    <p>Autism Speaks: 1-888-288-4762</p>
+                    <p>Available: Mon-Fri, 9am-5pm ET</p>
+                    <p><a href="https://www.autismspeaks.org">www.autismspeaks.org</a></p>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <h2>Dyslexia Resources</h2>
+                <p>Support for children with reading and language-based learning differences</p>
+                <div class="contact-info">
+                    <p class="helpline">International Dyslexia Association: 1-410-296-0232</p>
+                    <p>Dyslexia Helpline: 1-800-DYSREAD</p>
+                    <p>Available: Mon-Fri, 9am-5pm ET</p>
+                    <p><a href="https://dyslexiaida.org">dyslexiaida.org</a></p>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <h2>ADHD Support</h2>
+                <p>Resources for children with Attention-Deficit/Hyperactivity Disorder</p>
+                <div class="contact-info">
+                    <p class="helpline">CHADD Helpline: 1-866-200-8098</p>
+                    <p>Parent Support: 1-800-233-4050</p>
+                    <p>Available: Mon-Fri, 1pm-5pm ET</p>
+                    <p><a href="https://chadd.org">chadd.org</a></p>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <h2>Dyscalculia Resources</h2>
+                <p>Support for children with mathematics learning difficulties</p>
+                <div class="contact-info">
+                    <p class="helpline">Learning Disabilities Association: 1-412-341-1515</p>
+                    <p>Math Support Hotline: 1-800-MATHHELP</p>
+                    <p>Available: Mon-Fri, 9am-5pm ET</p>
+                    <p><a href="https://www.understood.org">understood.org</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
